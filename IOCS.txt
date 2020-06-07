@@ -1,0 +1,72 @@
+Threat Spotlight: Tycoon Ransomware Targets Education and Software Sectors
+
+
+Overview
+
+Tycoon is a multi-platform Java ransomware targeting Windows® and Linux® that has been observed in-the-wild since at least December 2019[1]. It is deployed in the form of a Trojanized Java Runtime Environment (JRE) and leverages an obscure Java image format to fly under the radar.
+
+The threat actors behind Tycoon were observed using highly targeted delivery mechanisms to infiltrate small to medium sized companies and institutions in education and software industries, where they would proceed to encrypt file servers and demand a ransom. However, due to the reuse of a common RSA private key it may be possible to recover data without the need for payment in earlier variants.
+
+Delivery
+
+The BlackBerry Research and Intelligence Team in partnership with KPMG’s UK Cyber Response Services recently unearthed a new ransomware strain written in Java. The ransomware was deployed in a targeted attack against an organization, where the system administrators had been locked out of their systems following an attack on their domain controller and file servers. After conducting forensic investigations of the infected systems, it became apparent that the initial intrusion occurred via an Internet-facing RDP jump-server.
+Post-incident analysis of the Internet-facing RDP server could not be performed as it had already been restored. However, our analysis of the victim machines revealed that some of the techniques used by the attacker were unusual and noteworthy:
+
+To achieve persistence on the victim’s machine, the attackers had used a technique called Image File Execution Options (IFEO) injection[2]. IFEO settings are stored in the Windows registry. These settings give developers an option to debug their software through the attachment of a debugging application during the execution of a target application.
+
+A backdoor was then executed alongside the Microsoft Windows On-Screen Keyboard (OSK) feature of the operating system:
+
+JIMAGE module (lib\modules):
+eddc43ee369594ac8b0a8a0eab6960dba8d58c0b499a51a717667f05572617fb
+
+Email Addresses:
+
+pay4dec[at]cock[.]lu
+dataissafe[at]protonmail[.]com
+dataissafe[at]mail[.]com
+foxbit[at]tutanota[.]com
+moncler[at]tutamail[.]com
+moncler[at]cock[.]li
+relaxmate[at]protonmail[.]com
+crocodelux[at]mail[.]ru
+savecopy[at]cock[.]li
+bazooka[at]cock[.]li
+funtik[at]tutamail[.]com
+proff-mariarti[at]protonmail[.]com
+Encrypted Files Extension:
+
+thanos
+grinch
+redrum
+Encrypted Files Signature:
+
+happyny3.1
+redrum3_0
+RSA Public Key (happyny3.1 version):
+
+-----BEGIN PUBLIC KEY-----
+
+MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDa+whJSxr9ngcD1T5GmjDNSUEY
+gz5esbymvy4lE9g2M3PvVc9iLw9Ybe+NMqJwHB8FYCTled48mXQmCvRH2Vw3lPkA
+TrQ4zbVx0fgEsoxekqtb3GbK2NseXEeavCi5lo5/jXZi4Td7nlWTu27CluyxRSgv
+L0O19CwzvckTM91BKwIDAQAB
+
+-----END PUBLIC KEY-----
+
+RSA Private Key (redrum3_0 version):
+
+-----BEGIN RSA PRIVATE KEY-----
+
+MIICXQIBAAKBgQCyNELzNaPcGBlt2YEARamc+a+uyM8/mRadrMLLQ9tuzkppvdWI
+iM/LH+xATZUgByknwzaMtRQZi6R2pQ8nBG6DxNtdhla33L+njQLTW+7wo1tSaaJz
+6Of0FvCUZNPZ0mF5OrJO+Z6ZfDxafcwv653Ii7aTwaKlhjFoZijBMrA43wIDAQAB
+AoGAPJ+I0yJBX0OXiwY+W3BXdj5+5LANyS30QqmeDvZDtRtat0RMW0lnn0t53JpI
+DABDoPJJIW8MqnAWAALA994LFhk9jUtJTUgwsViyKL/Q/dOCeBPJU3xyXNkqhmCN
+ImP4v7DxjvWp1pomrIIRCW68GkbB+cSGyLAzUo+1KHVh6LECQQDdL26UsVNsNYTX
+rfv6BZItGO1HJHYTiz0cI82n4woZY2fS2lpBDEvy3Rl8E4Y7F9tQby4odDLHi/9l
+RCeoif45AkEAzkDsPGauMmWsPXAbXrjzq3/0+MWgh7Vd8Gpgn83QUYjTO2RxtE1n
+zAYzTLrFFtM8zmCAubpKM1dyi4Xs7hlv1wJBAJD5ofV8NT3b5nKn61z5gdJlYEEd
+OPeecDOdlBLS0a/KZCbkT/wK300UdrvI4FajUHDsLsj9QLtim8f4YDYsHKECQQCX
+R40+XD3mnyZvRbv9hQDMyKSglyvAfimxvgSzEZ17QDVWubygd6nrPpz/6XnH3RYb
+dTLVhysHb1uHtKpslWGvAkAf0kivk9miSFnVeoO1XZumRAwrhTh6Rxhkg6MJCLBP
+ThoY7wYXmV9zNPo02xYTvZlyhwnWspz4Kx4LsUutWmBs
